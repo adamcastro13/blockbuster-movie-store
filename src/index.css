@@ -1,0 +1,16 @@
+/* .navbar-brand {
+  text-shadow: 2px 2px 4px rgba(117, 117, 117, 0.5);
+} */
+@font-face {
+  font-family: 'ITC Machine Medium';
+  src: url('/src/fonts/ITCMachineMedium.otf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+.navbar-brand {
+  font-family: 'ITC Machine Medium', sans-serif;
+  text-shadow: 2px 2px 4px rgba(117, 117, 117, 0.5);
+  font-size: 1.75rem; /* Slightly adjust size for better readability with the new font */
+  letter-spacing: 0.05em; /* Optional: Adjust spacing for ITC Machine Medium */
+}
