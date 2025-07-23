@@ -114,7 +114,7 @@ const FeaturedMovieForm = ({ movie, onAddToCart }) => {
         <div className="col-md-4">
           <Link to={`/movie/${movie.id}`} aria-label={`Ver detalles de ${movie.title}`}>
             <FeatureImage
-              src={movie.poster || 'https://via.placeholder.com/300x450/333/fff?text=Movie+Poster'}
+              src={movie.poster}
               alt={movie.title}
             />
           </Link>

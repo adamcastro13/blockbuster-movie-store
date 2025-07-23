@@ -113,7 +113,8 @@ const ProductForm = ({ movie, onSubmit, onCancel }) => {
     category: movie?.category || 'Acción',
     price: movie?.price || '',
     poster: movie?.poster || '',
-    actors: movie?.actors || ''
+    actors: movie?.actors || '',
+    isFeatured: movie?.isFeatured || false, // Nuevo campo
   });
 
   const categories = [
@@ -149,7 +150,8 @@ const ProductForm = ({ movie, onSubmit, onCancel }) => {
     onSubmit({
       ...formData,
       price: parseFloat(formData.price),
-      id: movie ? formData.id : undefined
+      id: movie ? formData.id : undefined,
+      actors: formData.actors ? formData.actors.split(',').map(actor => actor.trim()) : [],
     });
   };
 
@@ -203,6 +205,14 @@ const ProductForm = ({ movie, onSubmit, onCancel }) => {
                       value={formData.price}
                       onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                       required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">¿Es película destacada?</label>
+                    <FormControl
+                      type="checkbox"
+                      checked={formData.isFeatured}
+                      onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked })}
                     />
                   </div>
                 </div>

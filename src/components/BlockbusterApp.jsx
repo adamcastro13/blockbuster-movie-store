@@ -103,51 +103,74 @@ const BlockbusterApp = () => {
     setCurrentPage(1);
   }, [movies, searchTerm, selectedCategory]);
 
-  // Agregar una pelicula
+// Agregar una pelicula
   const handleAddMovie = async (movieData) => {
-    try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(movieData),
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const newMovie = await response.json();
-      setMovies(prev => [...prev, newMovie]);
-      toast.success('Película agregada con éxito');
-    } catch (err) {
-      toast.error('Error al agregar la película: ' + err.message);
+  try {
+    if (movieData.isFeatured) {
+      // Desmarcar todas las películas como destacadas
+      const promises = movies
+        .filter(m => m.isFeatured)
+        .map(m =>
+          fetch(`${API_URL}/${m.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...m, isFeatured: false }),
+          })
+        );
+      await Promise.all(promises);
     }
-  };
 
-  // Editar una pelicula
-  const handleEditMovie = async (movieData) => {
-    try {
-      const response = await fetch(`${API_URL}/${movieData.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(movieData),
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const updatedMovie = await response.json();
-      setMovies(prev =>
-        prev.map(movie =>
-          movie.id === updatedMovie.id ? updatedMovie : movie
-        )
-      );
-      toast.success('Película actualizada con éxito');
-    } catch (err) {
-      toast.error('Error al editar la película: ' + err.message);
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(movieData),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
+    const newMovie = await response.json();
+    setMovies(prev => [...prev, newMovie]);
+    toast.success('Película agregada con éxito');
+  } catch (err) {
+    toast.error('Error al agregar la película: ' + err.message);
+  }
+};
+//Editar una pelicula
+const handleEditMovie = async (movieData) => {
+  try {
+    if (movieData.isFeatured) {
+      // Desmarcar todas las demás películas como destacadas
+      const promises = movies
+        .filter(m => m.isFeatured && m.id !== movieData.id)
+        .map(m =>
+          fetch(`${API_URL}/${m.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...m, isFeatured: false }),
+          })
+        );
+      await Promise.all(promises);
+    }
+
+    const response = await fetch(`${API_URL}/${movieData.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(movieData),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const updatedMovie = await response.json();
+    setMovies(prev =>
+      prev.map(movie =>
+        movie.id === updatedMovie.id ? updatedMovie : movie
+      )
+    );
+    toast.success('Película actualizada con éxito');
+  } catch (err) {
+    toast.error('Error al editar la película: ' + err.message);
+  }
+};
 
   // Eliminar pelicula
   const handleDeleteMovie = async (movieId) => {

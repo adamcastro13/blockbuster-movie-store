@@ -192,12 +192,12 @@ const MovieDetail = () => {
         <meta name="keywords" content={`${movie.title}, ${movie.category}, ${movie.actors?.join(', ') || ''}, Blockbuster, películas`} />
         <meta property="og:title" content={`${movie.title} - Blockbuster`} />
         <meta property="og:description" content={`Detalles de ${movie.title}. ${movie.extensiveDescription || movie.description}`} />
-        <meta property="og:image" content={movie.poster || 'https://via.placeholder.com/300x450'} />
+        <meta property="og:image" content={movie.poster} />
       </Helmet>
       <MovieCard className="row">
         <div className="col-md-4">
           <MovieImage
-            src={movie.poster || 'https://via.placeholder.com/300x450/333/fff?text=Movie+Poster'}
+            src={movie.poster}
             alt={movie.title}
           />
         </div>

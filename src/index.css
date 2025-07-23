@@ -11,6 +11,6 @@
 .navbar-brand {
   font-family: 'ITC Machine Medium', sans-serif;
   text-shadow: 2px 2px 4px rgba(117, 117, 117, 0.5);
-  font-size: 1.75rem; /* Slightly adjust size for better readability with the new font */
-  letter-spacing: 0.05em; /* Optional: Adjust spacing for ITC Machine Medium */
+  font-size: 1.75rem; 
+  letter-spacing: 0.05em;
 }

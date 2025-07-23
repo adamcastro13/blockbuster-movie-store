@@ -90,7 +90,7 @@ const MovieCard = ({ movie, onAddToCart }) => {
       <CardContainer>
         <Link to={`/movie/${movie.id}`} aria-label={`Ver detalles de ${movie.title}`}>
           <CardImage
-            src={movie.poster || 'https://via.placeholder.com/300x450/333/fff?text=Movie+Poster'}
+            src={movie.poster}
             alt={movie.title}
           />
         </Link>

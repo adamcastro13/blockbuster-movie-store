@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import styled, { keyframes } from 'styled-components';
 import { FaFilm } from 'react-icons/fa';
 
-//Animacions
+// Animaciones
 const spotlight = keyframes`
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
@@ -35,7 +35,6 @@ const FeaturedSection = styled.div`
   overflow: hidden;
   animation: ${slideIn} 0.8s ease-out;
 
-  /* Spotlight effect */
   &::before {
     content: '';
     position: absolute;
@@ -54,10 +53,9 @@ const FeaturedSection = styled.div`
     z-index: 0;
   }
 
-  /* Responsive margin to avoid overlap with fixed Navbar and SearchAndFilters */
-  margin-top: 56px; /* Height of Navbar */
+  margin-top: 56px;
   @media (max-width: 768px) {
-    margin-top: 106px; /* Navbar (~56px) + SearchAndFilters (~50px) */
+    margin-top: 106px;
   }
 `;
 
@@ -112,34 +110,38 @@ const FeaturedButton = styled.button`
   }
 `;
 
-const API_URL_FEATURED = 'https://687db570918b642243327cf9.mockapi.io/featured_movie';
+const API_URL_MOVIES = 'https://687db570918b642243327cf9.mockapi.io/movies';
 
 const Header = ({ onShowLogin, onShowCart }) => {
   const { user, logout } = useAuth();
   const { getTotalItems, addToCart } = useCart();
   const location = useLocation();
   const [featuredMovie, setFeaturedMovie] = useState({
-    id: 'pulpFiction-offer',
+    id: '9',
     title: 'Pulp Fiction',
-    price: 599.99,
+    price: 4.89,
     category: 'Crimen',
     description: 'Historias entrecruzadas de crimen y redención.',
     poster: 'https://m.media-amazon.com/images/I/718LfFW+tIL.jpg',
+    isFeatured: true,
   });
+  const discount = 50
+  const oferta = featuredMovie.price - (featuredMovie.price * discount/100)
 
-  // Obtener la película destacada desde MockAPI
+  // Obtener la película destacada desde el endpoint movies
   useEffect(() => {
     const fetchFeaturedMovie = async () => {
       try {
-        const response = await fetch(`${API_URL_FEATURED}/1`);
+        const response = await fetch(API_URL_MOVIES);
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          console.warn(`No se pudo cargar las películas. Usando datos predeterminados. Estado: ${response.status}`);
+          return;
         }
-        const data = await response.json();
-        setFeaturedMovie(data);
+        const movies = await response.json();
+        const featured = movies.find(movie => movie.isFeatured === true) || movies[0]; // Fallback a la primera película si no hay destacada
+        setFeaturedMovie(featured);
       } catch (err) {
-        console.error('Error al cargar la película destacada:', err);
-        toast.error('Error al cargar la película destacada');
+        console.warn('Error al cargar la película destacada:', err);
       }
     };
     fetchFeaturedMovie();
@@ -150,7 +152,6 @@ const Header = ({ onShowLogin, onShowCart }) => {
     toast.success(`${featuredMovie.title} agregado al carrito`);
   };
 
-  // Ocultar la sección destacada en la página de detalles de la película
   const showFeaturedSection = !location.pathname.startsWith('/movie/');
 
   return (
@@ -226,10 +227,10 @@ const Header = ({ onShowLogin, onShowCart }) => {
               </div>
               <div className="col-md-8">
                 <FeaturedTitle id="featured-movie-title">
-                  🎥 ¡Oferta Especial: "{featuredMovie.title}" con 20% de descuento!
+                  🎥 ¡Oferta Especial: "{featuredMovie.title}" con un {discount}% de descuento!
                 </FeaturedTitle>
                 <FeaturedText>
-                  Disfruta de esta película icónica por solo ${featuredMovie.price}. ¡No te pierdas esta oferta de Blockbuster!
+                  Disfruta de esta película icónica por solo ${oferta}. ¡No te pierdas esta oferta de Blockbuster!
                 </FeaturedText>
                 <FeaturedButton
                   onClick={handleAddToCart}
