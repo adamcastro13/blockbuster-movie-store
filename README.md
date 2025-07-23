@@ -5,17 +5,6 @@ Una aplicación web creada con **React + Vite** que simula una tienda de alquile
 
 ---
 
-Características
-
-Carrito de Compras: Gestionado con CartContext, permite agregar, eliminar, actualizar cantidades y vaciar el carrito, con persistencia en localStorage.
-Gestión de Productos (Admin): Los administradores pueden crear, editar y eliminar películas usando un formulario integrado con MockAPI. Incluye validaciones para título, descripción (mínimo 10 caracteres) y precio (>0).
-
-
-Notificaciones: Utiliza React Toastify para mensajes de éxito y error, mejorando la retroalimentación al usuario.
-Animaciones: Incorpora animaciones sutiles (fade-in, scale-in, efectos de foco) usando keyframes de Styled-Components.
-
-
-
 ## 🚀 Características
 
 - 🛍️ **Compra de Películas:** agrega al carrito y finaliza la compra ficticia.
@@ -58,22 +47,22 @@ Scrips disponibles
 | `npm run lint`    | Corre ESLint en todos los archivos JS/JSX |
 
 Tecnologías utilizadas
-## React 19 + Vite
-## React Router v7
-## React Toastify
-## Styled Components
-## Bootstrap 5.3
-## MockAPI como backend simulado
-## React Helmet Async para SEO
+-  React 19 + Vite
+-  React Router v7
+-  React Toastify
+-  Styled Components
+-  Bootstrap 5.3
+-  MockAPI como backend simulado
+- React Helmet Async para SEO
 
-🔐 Credenciales de acceso
-Admin:
-Usuario: admin
-Contraseña: admin
+## 🔐 Credenciales de acceso
+**Admin:**
+- Usuario: admin
+- Contraseña: admin
 
-Usuario común:
-Usuario: user
-Contraseña: user
+**Usuario común:**
+- Usuario: user
+- Contraseña: user
 
 🧠Autor:
 Desarrollado por Adam Castro
