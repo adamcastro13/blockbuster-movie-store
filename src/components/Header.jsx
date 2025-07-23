@@ -43,9 +43,9 @@ const FeaturedSection = styled.div`
     width: 100%;
     height: 100%;
     background: linear-gradient(
-      90deg,
+      50deg,
       transparent,
-      rgba(255, 255, 255, 0.1),
+      rgba(91, 99, 0, 0.14),
       transparent
     );
     background-size: 200% 100%;
@@ -119,10 +119,10 @@ const Header = ({ onShowLogin, onShowCart }) => {
   const [featuredMovie, setFeaturedMovie] = useState({
     id: '9',
     title: 'Pulp Fiction',
-    price: 4.89,
+    price: 1200,
     category: 'Crimen',
     description: 'Historias entrecruzadas de crimen y redención.',
-    poster: 'https://m.media-amazon.com/images/I/718LfFW+tIL.jpg',
+    poster: 'https://i.pinimg.com/originals/fb/f4/b4/fbf4b4b5b982c142d6b25d8bf45daa40.gif',
     isFeatured: true,
   });
   const discount = 50
