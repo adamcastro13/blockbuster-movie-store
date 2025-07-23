@@ -12,6 +12,8 @@ import MovieCard from './MovieCard';
 import MovieDetail from './MovieDetail';
 import AdminPanel from './AdminPanel';
 import styled, { keyframes } from 'styled-components';
+import Footer from './Footer';
+
 
 // Animaciones
 const fadeInUp = keyframes`
@@ -266,7 +268,7 @@ const BlockbusterApp = () => {
                 {currentMovies.length === 0 ? (
                   <div className="text-center text-white py-5">
                     <h3>No se encontraron películas</h3>
-                    <p className="text-muted">
+                    <p>
                       {searchTerm || selectedCategory !== 'Todas'
                         ? 'Intenta ajustar tus filtros de búsqueda'
                         : 'Agrega algunas películas para comenzar'}
@@ -405,7 +407,9 @@ const BlockbusterApp = () => {
         show={showCart}
         onClose={() => setShowCart(false)}
       />
+      <Footer />
     </MainContainer>
+
   );
 };
 
