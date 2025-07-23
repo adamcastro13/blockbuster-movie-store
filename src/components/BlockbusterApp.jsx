@@ -12,6 +12,7 @@ import MovieCard from './MovieCard';
 import MovieDetail from './MovieDetail';
 import AdminPanel from './AdminPanel';
 import styled, { keyframes } from 'styled-components';
+import Footer from './Footer';
 
 // Animaciones
 const fadeInUp = keyframes`
@@ -405,6 +406,7 @@ const BlockbusterApp = () => {
         show={showCart}
         onClose={() => setShowCart(false)}
       />
+      <Footer />
     </MainContainer>
   );
 };
