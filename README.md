@@ -1,31 +1,82 @@
-Blockbuster Movie Store
-Una aplicación web moderna y responsiva para la venta de películas, construida con React, Context API, Bootstrap y Styled-Components. Simula una tienda en línea de películas al estilo de Blockbuster, con autenticación de usuarios, carrito de compras, gestión de productos, búsqueda, filtrado, paginación y optimización SEO. Se integra con MockAPI para operaciones CRUD simuladas y ofrece un diseño responsivo para diferentes dispositivos.
+# 🎬 Blockbuster App - Tienda de Películas
+
+¡Bienvenido a **Blockbuster App**!  
+Una aplicación web creada con **React + Vite** que simula una tienda de alquiler y compra de películas con funcionalidades de carrito, panel de administración, autenticación y diseño responsive.
+
+---
 
 Características
-Autenticación de Usuarios: Sistema de login simulado usando AuthContext con credenciales predefinidas (admin/admin para administradores, user/user para usuarios regulares). Los datos del usuario se almacenan en sessionStorage.
+
 Carrito de Compras: Gestionado con CartContext, permite agregar, eliminar, actualizar cantidades y vaciar el carrito, con persistencia en localStorage.
 Gestión de Productos (Admin): Los administradores pueden crear, editar y eliminar películas usando un formulario integrado con MockAPI. Incluye validaciones para título, descripción (mínimo 10 caracteres) y precio (>0).
-Búsqueda y Filtros: Barra de búsqueda para filtrar películas por título o descripción, y un desplegable para filtrar por categoría (Acción, Drama, Comedia, etc.).
-Paginación: Muestra películas en páginas (12 por página) con botones de navegación para una experiencia fluida.
-Diseño Responsivo: Usa el sistema de grillas de Bootstrap y Styled-Components para una interfaz adaptable y atractiva.
-Optimización SEO: Implementa React Helmet para títulos y metadatos dinámicos que mejoran la visibilidad en motores de búsqueda.
-Accesibilidad: Incluye etiquetas ARIA en elementos interactivos para mejorar la accesibilidad.
+
+
 Notificaciones: Utiliza React Toastify para mensajes de éxito y error, mejorando la retroalimentación al usuario.
 Animaciones: Incorpora animaciones sutiles (fade-in, scale-in, efectos de foco) usando keyframes de Styled-Components.
-Sección de Película Destacada: Resalta una película en oferta obtenida desde MockAPI, mostrada en la página principal.
-Tecnologías Utilizadas
-React: Librería para construir la interfaz de usuario.
-React Router: Gestiona la navegación entre páginas.
-Context API: Maneja el estado global para autenticación y carrito.
-Bootstrap: Proporciona un sistema de grillas y componentes responsivos.
-Styled-Components: Para estilos modulares y reutilizables con animaciones.
-React Helmet Async: Para optimización SEO con metadatos dinámicos.
-React Toastify: Para notificaciones amigables.
-React Icons: Para agregar íconos en botones y elementos interactivos.
-MockAPI: Simula un backend para almacenar y gestionar datos de películas.
-Vite: Herramienta de compilación rápida para desarrollo y producción.
-Instalación
-Prerrequisitos
-Node.js (versión 16 o superior)
-npm o yarn
-Un navegador web moderno (Chrome, Firefox, Edge, etc.)
+
+
+
+## 🚀 Características
+
+- 🛍️ **Compra de Películas:** agrega al carrito y finaliza la compra ficticia.
+- 🔐 **Autenticación simple:** Sistema de login simulado usando AuthContext con credenciales predefinidas. Los datos del usuario se almacenan en sessionStorage.Login para usuarios comunes (`user/user`) y administradores (`admin/admin`).
+- 🛠️ **Panel de Admin:** agregar, editar y eliminar películas desde el frontend. Ademas utiliza React Toastify para mensajes de éxito y error, mejorando la retroalimentación al usuario.
+- 🔍 **Buscador y filtros por categoría:** Barra de búsqueda para filtrar películas por título o descripción, y un desplegable para filtrar por categoría (Acción, Drama, Comedia, etc.).
+- 🧑 **Listado de actores, descripción y detalles.**
+- 📱 **Diseño Responsive:** Usa el sistema de grillas de Bootstrap y Styled-Components para una interfaz adaptable y atractiva. Optimizado para móviles y pantallas grandes. Incorpora animaciones sutiles (fade-in, scale-in, efectos de foco) usando keyframes de Styled-Components.
+- 🍿 **Película destacada:** se muestra automáticamente al cargar la página.
+- 🧠 **SEO dinámico:** usando `react-helmet-async`para títulos y metadatos dinámicos que mejoran la visibilidad en motores de búsqueda. Ademas incluye etiquetas ARIA en elementos interactivos para mejorar la accesibilidad
+- 📦 **MockAPI como backend simulado.**
+- **Sección de Película Destacada:** Resalta una película en oferta obtenida desde MockAPI, mostrada en la página principal. 
+
+---
+
+## 📦 Instalación
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/adamcastro13/blockbuster-movie-store
+cd blockbuster-app
+```
+## Instalar dependencias
+
+```bash
+npm install
+```
+Si da conflicto con versiones o permisos:
+
+```bash
+npm install --force
+```
+Scrips disponibles
+| Comando           | Acción                                    |
+| ----------------- | ----------------------------------------- |
+| `npm run dev`     | Inicia la app en modo desarrollo          |
+| `npm run build`   | Compila la app para producción            |
+| `npm run preview` | Previsualiza la versión compilada         |
+| `npm run lint`    | Corre ESLint en todos los archivos JS/JSX |
+
+Tecnologías utilizadas
+## React 19 + Vite
+## React Router v7
+## React Toastify
+## Styled Components
+## Bootstrap 5.3
+## MockAPI como backend simulado
+## React Helmet Async para SEO
+
+🔐 Credenciales de acceso
+Admin:
+Usuario: admin
+Contraseña: admin
+
+Usuario común:
+Usuario: user
+Contraseña: user
+
+🧠Autor:
+Desarrollado por Adam Castro
+
+📄 Licencia
+Este proyecto es solo para fines educativos. No comercial.
